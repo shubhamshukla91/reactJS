@@ -5,7 +5,7 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = JSON.parse(window.localStorage.getItem('state')) ||{
       languages: [
         { name: "Python", votes: 0 },
         { name: "Javascript", votes: 0 },
