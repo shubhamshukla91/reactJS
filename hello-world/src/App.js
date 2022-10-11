@@ -25,6 +25,18 @@ class App extends Component {
     newLanguages[i].votes++;
     this.setState({ languages: newLanguages });
   }
+  clear(state){
+    window.localStorage.clear(state);
+       this.setState({
+        languages:[
+          {name:"Javascript",votes:0},
+          {name:"Python",votes:0},
+          {name:"Java",votes:0},
+          {name:"C++",votes:0},
+          {name:"Kotlin",votes:0},
+       ]
+       })  
+  }
 
   render() {
     return (
@@ -40,6 +52,9 @@ class App extends Component {
               </div>
             </div>
           ))}
+          <div className="buttonClear">
+                <button onClick={this.clear.bind(this)}>Clear All</button>
+              </div>
         </div>
       </>
     );
