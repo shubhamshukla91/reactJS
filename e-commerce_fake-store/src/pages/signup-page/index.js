@@ -1,13 +1,13 @@
-import SignupCard from '../../components/signup-card';
-import './index.css';
+import SignupCard from "../../components/signup-card";
+import "./index.css";
 
-const Signup=()=>{
-return(
+const Signup = () => {
+  return (
     <>
-    <div>
-        <SignupCard className='signup'/>
-    </div>
+      <div>
+        <SignupCard className="signup" />
+      </div>
     </>
-)
-}
+  );
+};
 export default Signup;
