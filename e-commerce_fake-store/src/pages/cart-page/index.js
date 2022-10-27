@@ -3,27 +3,21 @@ import Product from "../../components/product-card";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  let count = localStorage.getItem("cartcount");
+  let count = localStorage.getItem("cartitem");
   const allData = [];
   for (let i = 0; i < count; i++) {
     const data = {
       name: localStorage.getItem("itemname" + i),
       price: localStorage.getItem("itemprice" + i),
       image: localStorage.getItem("itemimage" + i),
+      itemquantity: localStorage.getItem("itemquantity" + i),
     };
     allData.push(data);
   }
-  console.log(allData);
+  // console.log(allData);
   return (
     <>
-      {count == 0 && (
-        <>
-          <h1>Cart is Empty, Add some Items</h1>
-          <button>
-            <Link to={"/home"}>Continue Shop</Link>
-          </button>
-        </>
-      )}
+      {count == 0 && <h1>Cart is Empty, Add some Items</h1>}
 
       {count != 0 && (
         <>
@@ -33,7 +27,13 @@ const Cart = () => {
             <Link to={"/checkout"}>continue to checkout</Link>
           </button>
           {allData.map((data) => (
-            <Product title={data.name} price={data.price} image={data.image} />
+            <Product
+              title={data.name}
+              price={data.price}
+              image={data.image}
+              itemquantity={data.itemquantity}
+              variant={"cart"}
+            />
           ))}
         </>
       )}

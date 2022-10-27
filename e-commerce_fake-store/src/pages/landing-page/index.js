@@ -6,6 +6,18 @@ const LandingPage = () => {
   localStorage.setItem("isSignedup", false);
   localStorage.setItem("cartcount", 0);
   localStorage.setItem("carttotal", 0);
+  localStorage.setItem("cartitem", 0);
+  var alluserdata = [
+    {
+      fullname: "demo narayan",
+      email: "demo@gmail.com",
+      username: "demo11",
+      password: "1234",
+      confirmpassword: "1234",
+      address: "demo nagar, demo city",
+    },
+  ];
+  localStorage.setItem("alluserdata", JSON.stringify(alluserdata));
   return (
     <>
       <Navbar variant={"notloggedin"} />

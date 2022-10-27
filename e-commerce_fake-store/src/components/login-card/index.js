@@ -5,21 +5,25 @@ import React, { useState } from "react";
 const LoginCard = () => {
   const history = useHistory();
 
-  // const[userDetails, setUserDeatails]=useState
-
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setlogin] = useState({
+    username: "",
+    password: "",
+  });
+  var existingusers = JSON.parse(localStorage.getItem("alluserdata"));
 
   const submitHandler = () => {
-    if (
-      localStorage.getItem("username") === username &&
-      localStorage.getItem("password") === password
-    ) {
-      localStorage.setItem("isLoggedin", true);
-      return history.push("/home");
-    } else {
-      return alert("Wrong Username or Password");
-    }
+    existingusers.filter((users) => {
+      if (
+        users.username === login.username &&
+        users.password === login.password
+      ) {
+        localStorage.setItem("isLoggedin", true);
+        localStorage.setItem("isSignedup", true);
+        history.push("/home");
+      } else if (users.username === "" || users.password === "") {
+        alert("Enter Username and Password carefully");
+      }
+    });
   };
   return (
     <div className="login">
@@ -30,8 +34,12 @@ const LoginCard = () => {
           <input
             type="text"
             className="inputfields"
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
+            value={login.username}
+            onChange={(e) =>
+              setlogin((prevstate) => {
+                return { ...prevstate, username: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
@@ -39,15 +47,18 @@ const LoginCard = () => {
           <input
             type="password"
             className="inputfields"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={login.password}
+            onChange={(e) =>
+              setlogin((prevstate) => {
+                return { ...prevstate, password: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
           <p>
-            Don't have an account? SignUp <Link to={"/signup"}>Here</Link>
+            Don't have an account, SignUp <Link to={"/signup"}>Here</Link>
           </p>
-          {/* <label>submit</label> */}
           <input type="submit" className="inputfields"></input>
         </div>
       </form>

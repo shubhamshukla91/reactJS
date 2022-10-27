@@ -1,46 +1,46 @@
 import "./index.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignupCard = () => {
   const history = useHistory();
-
-  const [fullname, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
-  const [address, setAddress] = useState("");
+  var existingusers = JSON.parse(localStorage.getItem("alluserdata"));
+  const [userdata, setuserdata] = useState({
+    fullname: "",
+    email: "",
+    username: "",
+    password: "",
+    confirmpassword: "",
+    address: "",
+  });
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (fullname === "") {
+    if (userdata.fullname === "") {
       return alert("Please Enter Name");
-    } else if (email === "") {
+    } else if (userdata.email === "") {
       return alert("Please enter Email");
-    } else if (username === "") {
+    } else if (userdata.username === "") {
       return alert("Please enter Username");
-    } else if (password === "") {
+    } else if (userdata.password === "") {
       return alert("Please enter Password");
-    } else if (confirmpassword === "") {
+    } else if (userdata.confirmpassword === "") {
       return alert("Please enter Confirmation Password");
-    } else if (!(password === confirmpassword)) {
-      return alert("Please check passwords are not matching!");
-    } else if (address === "") {
+    } else if (!(userdata.password === userdata.confirmpassword)) {
+      return alert("Please check passwords are not matching");
+    } else if (userdata.address === "") {
       return alert("Please enter Address");
     } else {
-      localStorage.setItem("name", fullname);
-      localStorage.setItem("email", email);
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
-      localStorage.setItem("address", address);
+      existingusers.push(userdata);
+      localStorage.setItem("alluserdata", JSON.stringify(existingusers));
       localStorage.setItem("isSignedup", true);
       return history.push("/login");
     }
   };
   return (
     <div className="signup">
-      <h1>sign-up</h1>
+      <h1>sing-up</h1>
       <h3>Enter Your Details</h3>
       <form onSubmit={submitHandler}>
         <div>
@@ -48,8 +48,12 @@ const SignupCard = () => {
           <input
             type="text"
             className="inputfields"
-            value={fullname}
-            onChange={(e) => setFullName(e.target.value)}
+            value={userdata.fullname}
+            onChange={(e) =>
+              setuserdata((prevstate) => {
+                return { ...prevstate, fullname: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
@@ -57,8 +61,12 @@ const SignupCard = () => {
           <input
             type="email"
             className="inputfields"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={userdata.email}
+            onChange={(e) =>
+              setuserdata((prevstate) => {
+                return { ...prevstate, email: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
@@ -66,8 +74,12 @@ const SignupCard = () => {
           <input
             type="text"
             className="inputfields"
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
+            value={userdata.username}
+            onChange={(e) =>
+              setuserdata((prevstate) => {
+                return { ...prevstate, username: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
@@ -75,8 +87,12 @@ const SignupCard = () => {
           <input
             type="password"
             className="inputfields"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={userdata.password}
+            onChange={(e) =>
+              setuserdata((prevstate) => {
+                return { ...prevstate, password: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
@@ -84,8 +100,12 @@ const SignupCard = () => {
           <input
             type="password"
             className="inputfields"
-            value={confirmpassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={userdata.confirmpassword}
+            onChange={(e) =>
+              setuserdata((prevstate) => {
+                return { ...prevstate, confirmpassword: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
@@ -93,15 +113,18 @@ const SignupCard = () => {
           <input
             type="text"
             className="inputfields"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={userdata.address}
+            onChange={(e) =>
+              setuserdata((prevstate) => {
+                return { ...prevstate, address: e.target.value };
+              })
+            }
           ></input>
         </div>
         <div>
           <p>
-            Already have an account? Login <Link to={"/login"}>Here</Link>
+            Already have an account, Login <Link to={"/login"}>Here</Link>
           </p>
-          {/* <label>submit</label> */}
           <input type="submit" className="inputfields"></input>
         </div>
       </form>

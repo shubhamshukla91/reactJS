@@ -1,18 +1,22 @@
 import { useParams } from "react-router-dom";
 import Product from "../../components/product-card";
-import React, { useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Navbar from "../../components/navbar";
 
 const ProductDetails = () => {
   const params = useParams();
+
   const [productDetail, setProductDetail] = React.useState([]);
+
   // api varibale
   const api = "https://fakestoreapi.com/";
+
   const getProductDetail = useCallback(async () => {
     const response = await fetch(`${api}` + "products/" + `${params.id}`);
     const data = await response.json();
     setProductDetail(data);
-  });
+  }, []);
+
   useEffect(() => {
     getProductDetail();
   }, [getProductDetail]);
