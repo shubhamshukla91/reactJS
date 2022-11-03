@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import Product from "../../components/product-card";
 import Navbar from "../../components/navbar";
-import { Link, useHistory } from "react-router-dom";
+// import {useHistory } from "react-router-dom";
 
 const Home = () => {
   const [allProducts, setAllProducts] = React.useState([]);
   const [search, setSearch] = React.useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   // api varibale
   const api = "https://fakestoreapi.com/";
@@ -20,7 +20,6 @@ const Home = () => {
   useEffect(() => {
     getAllProducts();
   }, [getAllProducts]);
-
   return (
     <>
       <Navbar
@@ -36,7 +35,9 @@ const Home = () => {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </div>
-      <h1>Welcome</h1>
+      <h1>
+        Welcome {JSON.parse(localStorage.getItem("alluserdata")).fullname}
+      </h1>
       {allProducts
         .filter((product) => {
           if (search === "") {
