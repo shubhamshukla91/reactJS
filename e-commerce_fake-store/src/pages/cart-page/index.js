@@ -17,7 +17,10 @@ const Cart = () => {
   // console.log(allData);
   return (
     <>
-      {count == 0 && <h1>Cart is Empty, Add some Items</h1>}
+      {count == 0 && <>
+        <h1>Cart is Empty, Add some Items</h1>
+        <button><Link to={"/home"}>Go to shop</Link></button>
+      </>}
 
       {count != 0 && (
         <>
