@@ -12,9 +12,16 @@ const LandingPage = () => {
       fullname: "demo narayan",
       email: "demo@gmail.com",
       username: "demo11",
-      password: "1234",
-      confirmpassword: "1234",
+      password: "1234q",
+      confirmpassword: "1234q",
       address: "demo nagar, demo city",
+    },{
+      fullname: "shubham shukla",
+      email: "shubham.shukla@gmail.com",
+      username: "shubham11",
+      password: "123EZSx",
+      confirmpassword: "123ESZx",
+      address: "Vivekanandnagar, Sultanpur city",
     },
   ];
   localStorage.setItem("alluserdata", JSON.stringify(alluserdata));
