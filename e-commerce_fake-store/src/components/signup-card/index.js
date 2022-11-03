@@ -35,12 +35,13 @@ const SignupCard = () => {
       existingusers.push(userdata);
       localStorage.setItem("alluserdata", JSON.stringify(existingusers));
       localStorage.setItem("isSignedup", true);
+      alert("User added successfully!")
       return history.push("/login");
     }
   };
   return (
     <div className="signup">
-      <h1>sing-up</h1>
+      <h1>sign-up</h1>
       <h3>Enter Your Details</h3>
       <form onSubmit={submitHandler}>
         <div>
