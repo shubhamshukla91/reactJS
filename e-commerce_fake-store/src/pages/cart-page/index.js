@@ -1,4 +1,4 @@
-import Navbar from "../../components/navbar";
+// import Navbar from "../../components/navbar";
 import Product from "../../components/product-card";
 import { Link } from "react-router-dom";
 
@@ -44,3 +44,36 @@ const Cart = () => {
   );
 };
 export default Cart;
+
+// const Cart = () => {
+//   let {cartitemcount, cartcount, carttotal, cartitems} = JSON.parse(localStorage.getItem('cartDetails'));
+
+//   return (
+//     <>
+//       {cartitemcount === 0 && <>
+//         <h1>Cart is Empty, Add some Items</h1>
+//         <button><Link to={"/home"}>Go to shop</Link></button>
+//       </>}
+
+//       {cartitemcount !== 0 && (
+//         <>
+//           <h1>Cart has {cartcount} items</h1>
+//           <h3>Your Total is {carttotal}$</h3>
+//           <button>
+//             <Link to={"/checkout"}>continue to checkout</Link>
+//           </button>
+//           {Object.values(cartitems).map((data) => (
+//             <Product
+//               title={data.itemname}
+//               price={data.itemprice}
+//               image={data.itemimage}
+//               itemquantity={data.itemquantity}
+//               variant={"cart"}
+//             />
+//           ))}
+//         </>
+//       )}
+//     </>
+//   );
+// };
+// export default Cart;

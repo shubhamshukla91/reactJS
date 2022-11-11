@@ -87,3 +87,119 @@ const Product = ({
   );
 };
 export default Product;
+
+// const Product = ({
+//   id,
+//   title,
+//   price,
+//   description,
+//   category,
+//   image,
+//   rating,
+//   count,
+//   variant,
+//   itemquantity,
+// }) => {
+//   const [quantity, setquantity] = useState('');
+
+//   const handleClick = (e) => {
+//     if (quantity < 1) {
+//       alert("Please select a valid quantity");
+//     } else {
+//       let cartDetails = JSON.parse(localStorage.getItem('cartDetails'));
+//       if (cartDetails) {
+//         if (id in cartDetails.cartitems) {
+//           cartDetails = {
+//             cartcount: cartDetails.cartcount + Number(quantity),
+//             cartitemcount: cartDetails.cartitemcount,
+//             cartitems: {
+//               ...cartDetails.cartitems,
+//               [id]: {
+//                 itemname: title,
+//                 itemprice: price,
+//                 itemimage: image,
+//                 itemquantity: cartDetails.cartitems[id].itemquantity + Number(quantity),
+//               }
+//             },
+//             carttotal: cartDetails.carttotal + quantity * price,
+//           }
+//         }
+//         else {
+//           cartDetails = {
+//             cartcount: cartDetails.cartcount + Number(quantity),
+//             cartitemcount: cartDetails.cartitemcount + 1,
+//             cartitems: {
+//               ...cartDetails.cartitems,
+//               [id]: {
+//                 itemname: title,
+//                 itemprice: price,
+//                 itemimage: image,
+//                 itemquantity: Number(quantity),
+//               }
+//             },
+//             carttotal: cartDetails.carttotal + quantity * price,
+//           }
+//         }
+//       }
+//       else {
+//         cartDetails = {
+//           cartcount: Number(quantity),
+//           cartitemcount: 1,
+//           cartitems: {
+//             [id]: {
+//               itemname: title,
+//               itemprice: price,
+//               itemimage: image,
+//               itemquantity: Number(quantity),
+//             }
+//           },
+//           carttotal: quantity * price,
+//         }
+//       }
+//       localStorage.setItem("cartDetails", JSON.stringify(cartDetails));
+//     }
+
+//   };
+
+//   return (
+//     <>
+//       <div className="card">
+//         <p>Product Name: {title}</p>
+//         {variant === "cart" && <p>Quantity: {itemquantity}</p>}
+//         <p>Price: {price}$</p>
+//         <img src={image} alt="product" height="150" width="150" loading="lazy" />
+//         {variant === "detail" && <p>{description}</p>}
+//         {variant === "detail" && <p>{category}</p>}
+//         {variant === "home" && (
+//           <p>
+//             {" "}
+//             Rating: {rating}, Rated By:{count}
+//           </p>
+//         )}
+//         {variant === "home" && (
+//           <button>
+//             <Link to={`/product-detail/ ${id}`}>More information</Link>
+//           </button>
+//         )}
+//         {variant === "detail" && (
+//           <>
+//             <div>
+//               <label>Quantity</label>
+//               <input
+//                 type="number"
+//                 className="inputfields"
+//                 value={quantity}
+//                 onChange={(e) => setquantity(e.target.value)}
+//                 placeholder="00"
+//               ></input>
+//             </div>
+//             <button onClick={handleClick}>
+//               <Link to={{ pathname: "/home" }}>Add to Cart</Link>
+//             </button>
+//           </>
+//         )}
+//       </div>
+//     </>
+//   );
+// };
+// export default Product;
