@@ -20,6 +20,10 @@ const Navbar = ({ variant, cartcount }) => {
             <Link to={"/cart"}>Cart</Link>{" "}
           </button>
         )}
+        <button className="started">
+            {" "}
+            Theme{" "}
+          </button>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const Checkout = () => {
   let address = localStorage.getItem("address");
   let total = localStorage.getItem("carttotal");
   let itemcount = localStorage.getItem("cartitem");
-  const handleClick = () => {
+  const handleOrderConfirmation = () => {
     setstate(1);
     setTimeout(handleClick2, 6000);
   };
@@ -26,7 +26,9 @@ const Checkout = () => {
   };
   return (
     <>
-      {state == 0 && <button onClick={handleClick}>Confirm Order</button>}
+      {state == 0 && (
+        <button onClick={handleOrderConfirmation}>Confirm Order</button>
+      )}
       {state == 1 && (
         <h2>
           Your order for {count} items has been placed successfully,will be

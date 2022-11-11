@@ -2,6 +2,7 @@ import Navbar from "../../components/navbar";
 import "./index.css";
 
 const LandingPage = () => {
+  localStorage.removeItem("loggedInUser");
   localStorage.setItem("isLoggedin", false);
   localStorage.setItem("isSignedup", false);
   localStorage.setItem("cartcount", 0);
@@ -15,7 +16,8 @@ const LandingPage = () => {
       password: "1234q",
       confirmpassword: "1234q",
       address: "demo nagar, demo city",
-    },{
+    },
+    {
       fullname: "shubham shukla",
       email: "shubham.shukla@gmail.com",
       username: "shubham11",

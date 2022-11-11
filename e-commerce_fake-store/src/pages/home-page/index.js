@@ -12,7 +12,7 @@ const Home = () => {
   const api = "https://fakestoreapi.com/";
 
   const getAllProducts = useCallback(async () => {
-    const response = await fetch(`${api}` + "products");
+    const response = await fetch(`${api}products`);
     const data = await response.json();
     setAllProducts(data);
   }, []);
@@ -24,6 +24,7 @@ const Home = () => {
     <>
       <Navbar
         variant={"loggedin"}
+        // cartcount={JSON.parse(localStorage.getItem('cartDetails')).cartcount}
         cartcount={localStorage.getItem("cartcount")}
       />
       <div>
@@ -35,18 +36,15 @@ const Home = () => {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </div>
-      <h1>
-        Welcome {JSON.parse(localStorage.getItem("alluserdata")).fullname}
-      </h1>
+      <h1>Welcome {localStorage.getItem("loggedInUser")}</h1>
       {allProducts
         .filter((product) => {
-          if (search === "") {
-            return product;
-          } else if (
+          if (
+            !search ||
             product.title.toLowerCase().includes(search.toLowerCase())
-          ) {
+          )
             return product;
-          }
+          return null;
         })
         .map((product) => (
           <Product

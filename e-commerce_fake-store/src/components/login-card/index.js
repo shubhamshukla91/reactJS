@@ -5,24 +5,29 @@ import React, { useState } from "react";
 const LoginCard = () => {
   const history = useHistory();
 
-  const [login, setlogin] = useState({
+  const [login, setLogin] = useState({
     username: "",
     password: "",
   });
-  var existingusers = JSON.parse(localStorage.getItem("alluserdata"));
+  var existingUsers = JSON.parse(localStorage.getItem("alluserdata"));
 
   const submitHandler = () => {
-    existingusers.filter((users) => {
+    existingUsers.filter((users) => {
       if (
         users.username === login.username &&
         users.password === login.password
       ) {
         localStorage.setItem("isLoggedin", true);
+        localStorage.setItem('loggedInUser',users.username);
         localStorage.setItem("isSignedup", true);
         history.push("/home");
-      } else if (users.username === "" || users.password === "") {
+      } else if(users.username === "" || users.password === "") {
         alert("Enter Username and Password carefully");
       }
+      else{
+        return false;
+      }
+      return true;
     });
   };
   return (
@@ -36,7 +41,7 @@ const LoginCard = () => {
             className="inputfields"
             value={login.username}
             onChange={(e) =>
-              setlogin((prevstate) => {
+              setLogin((prevstate) => {
                 return { ...prevstate, username: e.target.value };
               })
             }
@@ -49,7 +54,7 @@ const LoginCard = () => {
             className="inputfields"
             value={login.password}
             onChange={(e) =>
-              setlogin((prevstate) => {
+              setLogin((prevstate) => {
                 return { ...prevstate, password: e.target.value };
               })
             }
