@@ -1,0 +1,26 @@
+.nav {
+  margin: 0;
+  padding: 0;
+  height: 120px;
+  width: 100%;
+  background-color: #cc96ff;
+  top: 0;
+  left: 0;
+}
+.navitems {
+  display: flex;
+  justify-content: space-around;
+  padding: 36px;
+}
+.logo {
+  font-size: 18px;
+  color: #ffffff;
+}
+.started {
+  height: 36px;
+  width: 120px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #cc96ff;
+  text-decoration: none;
+}

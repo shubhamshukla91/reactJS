@@ -1,0 +1,12 @@
+.signup {
+  height: 650px;
+  width: 500px;
+  background-color: white;
+  border-radius: 12px;
+}
+.inputfields {
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin: 20px;
+  height: 24px;
+}
