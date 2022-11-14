@@ -1,10 +1,11 @@
 import "./index.css";
 import { Link, useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContextProvider } from "../../StoreContext/ThemeContext";
 
 const LoginCard = () => {
   const history = useHistory();
-
+  const { colors } = useContext(ThemeContextProvider);
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -18,20 +19,18 @@ const LoginCard = () => {
         users.password === login.password
       ) {
         localStorage.setItem("isLoggedin", true);
-        localStorage.setItem('loggedInUser',users.username);
         localStorage.setItem("isSignedup", true);
         history.push("/home");
-      } else if(users.username === "" || users.password === "") {
+      } else if (users.username === "" || users.password === "") {
         alert("Enter Username and Password carefully");
-      }
-      else{
+      } else {
         return false;
       }
       return true;
     });
   };
   return (
-    <div className="login">
+    <div className="login" id={colors}>
       <h1>log-in</h1>
       <form onSubmit={submitHandler}>
         <div>

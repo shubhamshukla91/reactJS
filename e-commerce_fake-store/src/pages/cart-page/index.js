@@ -1,8 +1,12 @@
-// import Navbar from "../../components/navbar";
+import Navbar from "../../components/navbar";
 import Product from "../../components/product-card";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContextProvider } from "../../StoreContext/ThemeContext";
 
 const Cart = () => {
+  const { colors } = useContext(ThemeContextProvider);
+
   let count = localStorage.getItem("cartitem");
   const allData = [];
   for (let i = 0; i < count; i++) {
@@ -16,11 +20,15 @@ const Cart = () => {
   }
   // console.log(allData);
   return (
-    <>
-      {count == 0 && <>
-        <h1>Cart is Empty, Add some Items</h1>
-        <button><Link to={"/home"}>Go to shop</Link></button>
-      </>}
+    <div style={{ height: "94vh" }} id={colors}>
+      {count == 0 && (
+        <>
+          <h1>Cart is Empty, Add some Items</h1>
+          <button>
+            <Link to={"/home"}>Go to shop</Link>
+          </button>
+        </>
+      )}
 
       {count != 0 && (
         <>
@@ -40,40 +48,7 @@ const Cart = () => {
           ))}
         </>
       )}
-    </>
+    </div>
   );
 };
 export default Cart;
-
-// const Cart = () => {
-//   let {cartitemcount, cartcount, carttotal, cartitems} = JSON.parse(localStorage.getItem('cartDetails'));
-
-//   return (
-//     <>
-//       {cartitemcount === 0 && <>
-//         <h1>Cart is Empty, Add some Items</h1>
-//         <button><Link to={"/home"}>Go to shop</Link></button>
-//       </>}
-
-//       {cartitemcount !== 0 && (
-//         <>
-//           <h1>Cart has {cartcount} items</h1>
-//           <h3>Your Total is {carttotal}$</h3>
-//           <button>
-//             <Link to={"/checkout"}>continue to checkout</Link>
-//           </button>
-//           {Object.values(cartitems).map((data) => (
-//             <Product
-//               title={data.itemname}
-//               price={data.itemprice}
-//               image={data.itemimage}
-//               itemquantity={data.itemquantity}
-//               variant={"cart"}
-//             />
-//           ))}
-//         </>
-//       )}
-//     </>
-//   );
-// };
-// export default Cart;

@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import Navbar from "../../components/navbar";
+import { ThemeContextProvider } from "../../StoreContext/ThemeContext";
 import "./index.css";
 
 const LandingPage = () => {
-  localStorage.removeItem("loggedInUser");
+  const { colors } = useContext(ThemeContextProvider);
+
   localStorage.setItem("isLoggedin", false);
   localStorage.setItem("isSignedup", false);
   localStorage.setItem("cartcount", 0);
@@ -28,11 +31,11 @@ const LandingPage = () => {
   ];
   localStorage.setItem("alluserdata", JSON.stringify(alluserdata));
   return (
-    <>
+    <div style={{ height: "96.6vh" }} id={colors}>
       <Navbar variant={"notloggedin"} />
       <h1>Welcome to Fake Store</h1>
       <h3>This is made using Fake Store Api</h3>
-    </>
+    </div>
   );
 };
 export default LandingPage;

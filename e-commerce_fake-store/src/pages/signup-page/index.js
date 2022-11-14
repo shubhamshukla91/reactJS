@@ -3,11 +3,9 @@ import "./index.css";
 
 const Signup = () => {
   return (
-    <>
-      <div>
-        <SignupCard className="signup" />
-      </div>
-    </>
+    <div style={{ height: "100vh", overflowX: "hidden" }}>
+      <SignupCard className="signup" />
+    </div>
   );
 };
 export default Signup;

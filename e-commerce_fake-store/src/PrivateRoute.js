@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem("loggedInUser");
-  // const token = JSON.parse(localStorage.getItem("isLoggedin"));
-  //console.log(token);
+  const token = JSON.parse(localStorage.getItem("isLoggedin"));
   return token ? children : <Redirect to={"/login"} />;
 };
 export default PrivateRoute;

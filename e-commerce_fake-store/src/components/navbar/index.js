@@ -1,12 +1,17 @@
 import "./index.css";
 import { Link } from "react-router-dom";
+import { ThemeContextProvider } from "../../StoreContext/ThemeContext";
+import { useContext } from "react";
+import Themechanger from "../../StoreContext/Themechanger";
 
 const Navbar = ({ variant, cartcount }) => {
-  // const cartcount =
+  const { colors } = useContext(ThemeContextProvider);
   return (
-    <div className="nav">
-      <div className="navitems">
-        <span className="logo">COMPANY LOGO</span>
+    <div className="nav" id={colors}>
+      <div className="navitems" id={"nav" + colors}>
+        <span className="logo" id={"nav" + colors}>
+          COMPANY LOGO
+        </span>
         {variant === "notloggedin" && (
           <button className="started">
             {" "}
@@ -15,15 +20,14 @@ const Navbar = ({ variant, cartcount }) => {
         )}
         {variant === "loggedin" && <p>Your cart has {cartcount} items</p>}
         {variant === "loggedin" && (
-          <button className="started">
+          <button className="started" id={"nav" + colors}>
             {" "}
-            <Link to={"/cart"}>Cart</Link>{" "}
+            <Link id={"nav" + colors} to={"/cart"}>
+              Cart
+            </Link>{" "}
           </button>
         )}
-        <button className="started">
-            {" "}
-            Theme{" "}
-          </button>
+        <Themechanger />
       </div>
     </div>
   );

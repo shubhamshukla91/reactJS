@@ -1,9 +1,12 @@
 import "./index.css";
 import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ThemeContextProvider } from "../../StoreContext/ThemeContext";
 
 const SignupCard = () => {
+  const { colors } = useContext(ThemeContextProvider);
+
   const history = useHistory();
   var existingusers = JSON.parse(localStorage.getItem("alluserdata"));
   const [userdata, setuserdata] = useState({
@@ -35,12 +38,12 @@ const SignupCard = () => {
       existingusers.push(userdata);
       localStorage.setItem("alluserdata", JSON.stringify(existingusers));
       localStorage.setItem("isSignedup", true);
-      alert("User added successfully!")
+      alert("User added successfully!");
       return history.push("/login");
     }
   };
   return (
-    <div className="signup">
+    <div style={{ margin: 0 }} className="signup" id={colors}>
       <h1>sign-up</h1>
       <h3>Enter Your Details</h3>
       <form onSubmit={submitHandler}>

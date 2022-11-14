@@ -24,7 +24,6 @@ const Home = () => {
     <>
       <Navbar
         variant={"loggedin"}
-        // cartcount={JSON.parse(localStorage.getItem('cartDetails')).cartcount}
         cartcount={localStorage.getItem("cartcount")}
       />
       <div>
@@ -36,14 +35,17 @@ const Home = () => {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </div>
-      <h1>Welcome {localStorage.getItem("loggedInUser")}</h1>
+      <h1>
+        Welcome {JSON.parse(localStorage.getItem("alluserdata")).fullname}
+      </h1>
       {allProducts
         .filter((product) => {
           if (
             !search ||
             product.title.toLowerCase().includes(search.toLowerCase())
-          )
+          ) {
             return product;
+          }
           return null;
         })
         .map((product) => (

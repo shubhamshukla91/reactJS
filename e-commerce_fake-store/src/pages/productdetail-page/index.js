@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Product from "../../components/product-card";
-import React, { useState, useEffect, useCallback } from "react";
+import React, {useEffect, useCallback } from "react";
 import Navbar from "../../components/navbar";
 
 const ProductDetails = () => {
@@ -22,7 +22,7 @@ const ProductDetails = () => {
   }, [getProductDetail]);
   console.log(productDetail.title);
   return (
-    <>
+    <div style={{ height: "96.5vh" }}>
       <Navbar
         variant={"loggedin"}
         cartcount={localStorage.getItem("cartcount")}
@@ -37,7 +37,7 @@ const ProductDetails = () => {
         category={productDetail.category}
         image={productDetail.image}
       />
-    </>
+    </div>
   );
 };
 export default ProductDetails;

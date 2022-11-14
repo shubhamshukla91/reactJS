@@ -4,10 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import './index.css';
+import ThemeContext from './StoreContext/ThemeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <ThemeContext>
+      <App/>
+    </ThemeContext>
   </BrowserRouter>
 );

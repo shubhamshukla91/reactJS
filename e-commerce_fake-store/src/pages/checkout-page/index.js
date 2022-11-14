@@ -8,11 +8,11 @@ const Checkout = () => {
   let address = localStorage.getItem("address");
   let total = localStorage.getItem("carttotal");
   let itemcount = localStorage.getItem("cartitem");
-  const handleOrderConfirmation = () => {
+  const handleClick = () => {
     setstate(1);
-    setTimeout(handleClick2, 6000);
+    setTimeout(handleOrderConfirmation, 6000);
   };
-  const handleClick2 = () => {
+  const handleOrderConfirmation = () => {
     localStorage.setItem("cartcount", 0);
     localStorage.setItem("carttotal", 0);
     localStorage.setItem("cartitem", 0);
@@ -25,10 +25,8 @@ const Checkout = () => {
     return history.push("/home");
   };
   return (
-    <>
-      {state == 0 && (
-        <button onClick={handleOrderConfirmation}>Confirm Order</button>
-      )}
+    <div style={{ height: "96.5vh" }}>
+      {state == 0 && <button onClick={handleClick}>Confirm Order</button>}
       {state == 1 && (
         <h2>
           Your order for {count} items has been placed successfully,will be
@@ -36,7 +34,7 @@ const Checkout = () => {
           will be {total}$.
         </h2>
       )}
-    </>
+    </div>
   );
 };
 export default Checkout;

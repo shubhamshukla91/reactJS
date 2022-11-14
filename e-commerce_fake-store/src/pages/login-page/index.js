@@ -3,11 +3,9 @@ import "./index.css";
 
 const Login = () => {
   return (
-    <>
-      <div>
-        <LoginCard className="login" />
-      </div>
-    </>
+    <div style={{ height: "100vh", overflowX: "hidden" }}>
+      <LoginCard className="login" />
+    </div>
   );
 };
 export default Login;
