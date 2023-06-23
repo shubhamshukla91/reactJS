@@ -214,7 +214,7 @@ const CurrencyChanger = ({ flagData, variant }) => {
               ))}
             </div>
             <h1> Coin Price History</h1>
-            <BarChart width={40000} height={400} margin={margin} data={graph} />
+            <BarChart width={4000} height={400} margin={margin} data={graph} />
           </div>
         )}
       </div>
