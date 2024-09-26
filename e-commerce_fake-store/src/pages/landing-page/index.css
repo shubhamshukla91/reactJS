@@ -1,0 +1,26 @@
+body {
+    text-align: center;
+    margin: 0;
+    background-color: #eee;
+}
+
+#black {
+    background-color: rgb(14, 14, 14);
+    color: rgb(251, 248, 248);
+}
+
+#white {
+    background-color: rgba(226, 219, 219, 0.922);
+    color: rgb(0, 0, 0);
+
+}
+
+#red {
+    background-color: rgba(219, 82, 82, 0.934);
+    color: aliceblue;
+}
+
+#blue {
+    background-color: #40C5CA;
+    color: whitesmoke;
+}
